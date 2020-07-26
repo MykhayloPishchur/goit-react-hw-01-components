@@ -4,7 +4,9 @@ import friendListStyles from "./friendList.module.css";
 
 const FriendListItem = ({ avatar, name, isOnline }) => (
   <>
-    <span className={checkStatus(isOnline)}></span>
+    <span
+      className={isOnline ? friendListStyles.online : friendListStyles.offline}
+    ></span>
     <img
       className={friendListStyles.avatar}
       src={avatar}
@@ -15,16 +17,15 @@ const FriendListItem = ({ avatar, name, isOnline }) => (
   </>
 );
 
-const checkStatus = (isOnline) => {
-  const status = [friendListStyles.status];
+// const checkStatus = (isOnline) => {
+//   const status = [friendListStyles.status];
 
-  if (isOnline) {
-    status.push(friendListStyles.online);
-  } else status.push(friendListStyles.offline);
-  //   console.log(status);
+//   if (isOnline) {
+//     status.push(friendListStyles.online);
+//   } else status.push(friendListStyles.offline);
 
-  return status.join(" ");
-};
+//   return status.join(" ");
+// };
 
 FriendListItem.defaultProps = {
   avatar: "https://i.ibb.co/7NmPR1b/avatar.png",
